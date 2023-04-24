@@ -1,8 +1,11 @@
-FROM node:14.20.0-alpine
+FROM node:14.17.0-alpine
 
 RUN mkdir /app
 WORKDIR /app
 
-RUN yarn --pure-lockfile
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["sh", "/entrypoint.sh"]
+
 CMD ["yarn", "start"]
 
