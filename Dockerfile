@@ -1,4 +1,6 @@
-FROM node:14.17.0-alpine
+FROM node:18.17-alpine
+
+RUN apk update && apk add ca-certificates
 
 RUN mkdir /app
 WORKDIR /app
