@@ -1,14 +1,11 @@
-FROM node:20-slim
+FROM node:18-slim
 
-RUN mkdir -p node_modules/node-sass/vendor/linux-x64-51 \ 
-    && curl -L https://github.com/sass/node-sass/releases/download/v4.5.0/linux-x64-51_binding.node -o node_modules/node-sass/vendor/linux-x64-51/binding.node
+RUN apt-get update && apt-get install -y ca-certificates python yarn ssh-agent
 
 RUN mkdir /app
 WORKDIR /app
 
 COPY entrypoint.sh /entrypoint.sh
-
-ENV PYTHON /usr/bin/python3
 
 ENTRYPOINT ["sh", "/entrypoint.sh"]
 
