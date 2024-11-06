@@ -1,6 +1,6 @@
 FROM node:20-slim
 
-RUN apt-get update && apt-get install -y ca-certificates python3 yarn ssh
+RUN apt-get update && apt-get install -y ca-certificates python3 yarn ssh rsync
 
 RUN mkdir /app
 WORKDIR /app
