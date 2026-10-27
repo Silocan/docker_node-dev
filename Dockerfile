@@ -1,8 +1,12 @@
-FROM node:24-alpine
+FROM node:22-alpine
 
-RUN apk update && apk add ca-certificates openssh git curl rsync
+RUN apk add --no-cache \
+    ca-certificates \
+    openssh-client \
+    git \
+    curl \
+    rsync
 
-RUN mkdir /app
 WORKDIR /app
 
 COPY entrypoint.sh /entrypoint.sh
@@ -10,4 +14,3 @@ COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["sh", "/entrypoint.sh"]
 
 CMD ["yarn", "start"]
-
